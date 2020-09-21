@@ -1,15 +1,13 @@
 import datetime
-import os
 import secrets
 import shutil
 import tempfile
 from pathlib import Path
-from time import sleep
-from typing import List, Optional
+from typing import Optional
 
-from fastapi import Body, Depends, FastAPI, File, HTTPException, UploadFile, status
-from fastapi.responses import FileResponse, StreamingResponse
-from fastapi.security import HTTPBasic, HTTPBasicCredentials
+from fastapi import Body, Depends, FastAPI, File, HTTPException, UploadFile
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import StreamingResponse, HTMLResponse
 from sqlalchemy.orm import Session
 
 from . import crud, models, schemas
@@ -27,6 +25,15 @@ from .utils import (
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+
+@app.get("/", response_class=HTMLResponse)
+def index():
+    index_path = Path("app") / "static" / "index.html"
+    with index_path.open("r") as f:
+        html = f.read()
+    return HTMLResponse(content=html, status_code=200)
 
 
 @app.post("/create_user/", response_model=schemas.User)

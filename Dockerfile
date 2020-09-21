@@ -1,6 +1,6 @@
 FROM python:3.8
 RUN pip install pipenv
-RUN pipenv install
 EXPOSE 80
-COPY ./app /app
+COPY ./ ./
+RUN pipenv install
 CMD ["pipenv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]

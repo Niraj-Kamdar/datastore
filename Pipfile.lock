@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8ea378bdf4e36bf6befd507eec7edf7fed035472d4d3cb2eef3c78bb5711f9c4"
+            "sha256": "9e247d561171ae6db21bf9f07e6b92ab0e76ecf183743c9e2fd3bc6a62bdedd8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,11 +16,20 @@
         ]
     },
     "default": {
+        "aiofiles": {
+            "hashes": [
+                "sha256:377fdf7815cc611870c59cbd07b68b180841d2a2b79812d8c218be02448c2acb",
+                "sha256:98e6bcfd1b50f97db4980e182ddd509b7cc35909e903a8fe50d8849e02d815af"
+            ],
+            "index": "pypi",
+            "version": "==0.5.0"
+        },
         "click": {
             "hashes": [
                 "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a",
                 "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"
             ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
             "version": "==7.1.2"
         },
         "fastapi": {
@@ -76,6 +85,7 @@
                 "sha256:f769141ab0abfadf3305d4fcf36660e5cf568a666dd3efab7c3d4782f70946b1",
                 "sha256:f8af9b840a9074e08c0e6dc93101de84ba95df89b267bf7151d74c553d66833b"
             ],
+            "markers": "python_version >= '3.6'",
             "version": "==1.6.1"
         },
         "pymemcache": {
@@ -98,6 +108,7 @@
                 "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
                 "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
             ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.15.0"
         },
         "sqlalchemy": {
@@ -143,6 +154,7 @@
                 "sha256:bd2ffe5e37fb75d014728511f8e68ebf2c80b0fa3d04ca1479f4dc752ae31ac9",
                 "sha256:ebe8ee08d9be96a3c9f31b2cb2a24dbdf845247b745664bd8a3f9bd0c977fdbc"
             ],
+            "markers": "python_version >= '3.6'",
             "version": "==0.13.6"
         },
         "uvicorn": {
@@ -193,6 +205,7 @@
                 "sha256:e898a0863421650f0bebac8ba40840fc02258ef4714cb7e1fd76b6a6354bda36",
                 "sha256:f8a7bff6e8664afc4e6c28b983845c5bc14965030e3fb98789734d416af77c4b"
             ],
+            "markers": "python_full_version >= '3.6.1'",
             "version": "==8.1"
         }
     },

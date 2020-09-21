@@ -7,10 +7,11 @@ verify_ssl = true
 
 [packages]
 fastapi = "*"
+uvicorn = "*"
+aiofiles = "*"
+python-multipart = "*"
 sqlalchemy = "*"
 pymemcache = "*"
-uvicorn = "*"
-python-multipart = "*"
 
 [requires]
 python_version = "3.8"

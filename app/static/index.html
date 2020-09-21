@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Datastore</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .link{
+            text-decoration: none;
+            color: blueviolet;
+        }
+        #title {
+            color : white;
+            position: absolute;
+            font-size: xx-large;
+            top : 5%;
+            left : 10%;
+            z-index: 1;
+        }
+        #img_container{
+            position: relative;
+        }
+        #content {
+            color : white;
+            margin: 0 20px;
+            position: absolute;
+            left : 60%;
+            top : 40%;
+            transform: translateY(-50%);
+            z-index: 1;
+
+        }
+        #btn{
+            border: 0;
+            cursor: pointer;
+            /*outline: 1px solid white;*/
+            margin-top : 50px;
+            padding: 10px 0 10px 10px;
+            color : black;
+            font-size: medium;
+        }
+        #arrow {
+            color:white;
+            background-color: blueviolet;
+            padding: 10px;
+            margin-left:10px;
+            border-bottom-left-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+   <div id="img_container">
+       <img src="/static/banner.jpg" alt="flash" width="100%"/>
+       <div id="title">
+           Datastore
+       </div>
+       <div id="content">
+           <h2>Store your data with ease.</h2>
+           <p>This is a REST API server that supports upload and download of files with ability to pause, resume and abort.</p>
+           <button id="btn"><a class="link" href="/docs">Documentation<span id="arrow">&nbsp>></span></a></button>
+       </div>
+   </div>
+</body>
+</html>
