@@ -1,0 +1,26 @@
+version: '3'
+services:
+  memcached:
+    image: memcached
+    ports:
+      - 11211:11211
+    command: ["memcached", "-p", "11211"]
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - ~/data_store/db:/var/lib/postgresql/data
+  web:
+    build: .
+    ports:
+      - 80:80
+    environment:
+      MEMCACHED_HOST: memcached
+      MEMCACHED_PORT: 11211
+      DATABASE_URL: postgresql://postgres:secret@db:5432
+    volumes:
+      - ~/data_store/data:/app/data
+    depends_on:
+      - memcached
+      - db

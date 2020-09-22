@@ -12,6 +12,7 @@ aiofiles = "*"
 python-multipart = "*"
 sqlalchemy = "*"
 pymemcache = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.8"

@@ -28,6 +28,13 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 
+@app.on_event("startup")
+def startup_event():
+    path = Path("app") / "data"
+    if not path.is_dir():
+        path.mkdir()
+
+
 @app.get("/", response_class=HTMLResponse)
 def index():
     index_path = Path("app") / "static" / "index.html"
@@ -123,18 +130,17 @@ def upload_file(
     current_state["is_assigned"] = True
     cache[task_id] = current_state
 
-    path = Path(f"./data/{user.email}")
+    path = Path("app") / "data" / user.email
     if not path.is_dir():
         path.mkdir()
-    else:
-        path /= file.filename
-        file_downloader(file, path, task_id)
-        try:
-            del cache[task_id]
-            return {"status": "File uploaded successfully!"}
-        except KeyError:
-            path.unlink()
-            return HTTPException(status_code=400, detail=f"Task: {task_id} aborted!")
+    path /= file.filename
+    file_downloader(file, path, task_id)
+    try:
+        del cache[task_id]
+        return {"status": "File uploaded successfully!"}
+    except KeyError:
+        path.unlink()
+        return HTTPException(status_code=400, detail=f"Task: {task_id} aborted!")
 
 
 @app.get("/download_file/{task_id}")
@@ -159,7 +165,7 @@ def download_file(
     current_state["is_assigned"] = True
     cache[task_id] = current_state
 
-    paths = Path(f"./data/{user.email}/").glob(filename)
+    paths = Path(f"app/data/{user.email}/").glob(filename)
     if from_date is None:
         from_date = datetime.datetime.fromtimestamp(0)
     if to_date is None:
@@ -209,7 +215,7 @@ def delete_file(
     current_state["is_assigned"] = True
     cache[task_id] = current_state
 
-    paths = Path(f"./data/{user.email}/").glob(filename)
+    paths = Path(f"app/data/{user.email}/").glob(filename)
     if from_date is None:
         from_date = datetime.datetime.fromtimestamp(0)
     if to_date is None:
