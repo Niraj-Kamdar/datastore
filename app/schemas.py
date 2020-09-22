@@ -1,8 +1,8 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class UserBase(BaseModel):
-    email: str
+    email: str = Field(..., example="datastore@gmail.com")
 
 
 class UserCreate(UserBase):
@@ -15,3 +15,11 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
+
+class TaskBase(BaseModel):
+    task_id: str
+
+
+class Message(BaseModel):
+    message: str
